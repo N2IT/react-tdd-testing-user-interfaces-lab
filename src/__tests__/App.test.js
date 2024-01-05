@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { logRoles, render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom';
 
 import App from "../App";
@@ -8,7 +8,7 @@ import App from "../App";
 test("displays a top-level heading with the text `Hi, I'm Tony`", ()=> {
     
     //Arrange
-    render (<App />)
+    render(<App />)
     
     //Act
     const topLevelHeading = screen.getByRole("heading", {
@@ -63,8 +63,9 @@ test("displays 1 link to my linkedIn page", () =>{
     render(<App />)
 
     //Act
-    const linkedInLink = screen.getByRole("link", {name : /linkedin/i })
+    const linkedInLink = screen.getByRole("link", { name: /linkedin/i })
     
     //Assert
     expect(linkedInLink).toBeInTheDocument()
+    expect(linkedInLink).toHaveAttribute("href", "https://linkedin.com/in/tony-eder")
 })
